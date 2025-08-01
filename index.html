@@ -66,15 +66,17 @@
     }
 
     .centro {
-      position: absolute;
-      width: 70px;
-      height: 70px;
-      background: radial-gradient(circle, #cc0044, #990033);
-      border-radius: 50%;
-      top: 40px;
-      left: 40px;
-      box-shadow: 0 0 10px rgba(204, 0, 68, 0.5);
-    }
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50px;
+  height: 50px;
+  background: radial-gradient(circle, #ff6699, #cc3366);
+  border-radius: 50%;
+  box-shadow: inset -4px -4px 8px rgba(0, 0, 0, 0.2);
+  transform: translate(-50%, -50%);
+}
+
 
     @keyframes girar {
       from { transform: translate(-50%, -50%) rotate(0deg); }
@@ -128,3 +130,4 @@
   </script>
 </body>
 </html>
+
