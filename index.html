@@ -19,15 +19,51 @@
       font-size: 2em;
     }
 
+    /* Rosa en el centro */
+    .rosa {
+      width: 120px;
+      height: 120px;
+      margin: 50px auto;
+      background: radial-gradient(circle at 30% 30%, #ff3366, #cc0055);
+      border-radius: 50%;
+      position: relative;
+      animation: latido 2s infinite ease-in-out;
+      box-shadow: 0 0 25px rgba(255, 51, 102, 0.6);
+    }
+
+    .rosa::before, .rosa::after {
+      content: '';
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background: radial-gradient(circle at 30% 30%, #ff6699, #cc3366);
+      border-radius: 50%;
+      top: -20px;
+      left: 10px;
+      transform: rotate(45deg);
+      opacity: 0.8;
+    }
+
+    .rosa::after {
+      top: 10px;
+      left: -20px;
+      transform: rotate(-45deg);
+    }
+
+    @keyframes latido {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
     .petalo {
       position: absolute;
-      width: 20px;
-      height: 20px;
+      width: 16px;
+      height: 16px;
       background: radial-gradient(circle at 30% 30%, #ff69b4, #ff1493);
       border-radius: 50% 50% 0 0;
       transform: rotate(45deg);
       opacity: 0.8;
-      animation: caer 8s linear infinite;
+      animation: caer 10s linear infinite;
     }
 
     @keyframes caer {
@@ -40,61 +76,22 @@
         opacity: 0;
       }
     }
-
-    .rosa-css {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 120px;
-      height: 120px;
-      background: radial-gradient(circle, #e6005c 0%, #b30047 70%);
-      border-radius: 50% 50% 50% 50%;
-      box-shadow:
-        0 0 0 10px #ff66a3,
-        0 0 0 20px #ffb3cc,
-        0 0 0 30px #ffe6ef;
-      animation: aparecer 2s ease-out;
-    }
-
-    @keyframes aparecer {
-      0% {
-        transform: translate(-50%, -50%) scale(0.2);
-        opacity: 0;
-      }
-      100% {
-        transform: translate(-50%, -50%) scale(1);
-        opacity: 1;
-      }
-    }
   </style>
 </head>
 <body>
   <h1>🌸 Estas flores son para vos 🌸</h1>
+  <div class="rosa"></div>
 
-  <!-- Rosa generada por CSS -->
-  <div class="rosa-css"></div>
-
-  <!-- Pétalos -->
-  <div class="petalo"></div>
-  <div class="petalo"></div>
-  <div class="petalo"></div>
-  <div class="petalo"></div>
-  <div class="petalo"></div>
-  <div class="petalo"></div>
-  <div class="petalo"></div>
-  <div class="petalo"></div>
-  <div class="petalo"></div>
-  <div class="petalo"></div>
-  <div class="petalo"></div>
-  <div class="petalo"></div>
-  <div class="petalo"></div>
-  <div class="petalo"></div>
-  <div class="petalo"></div>
-  <div class="petalo"></div>
-  <div class="petalo"></div>
-  <div class="petalo"></div>
-  <div class="petalo"></div>
-  <div class="petalo"></div>
+  <!-- Más pétalos -->
+  <script>
+    for (let i = 0; i < 35; i++) {
+      const petalo = document.createElement('div');
+      petalo.classList.add('petalo');
+      petalo.style.left = Math.random() * 100 + 'vw';
+      petalo.style.animationDelay = Math.random() * 8 + 's';
+      petalo.style.animationDuration = 8 + Math.random() * 5 + 's';
+      document.body.appendChild(petalo);
+    }
+  </script>
 </body>
 </html>
