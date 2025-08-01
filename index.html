@@ -15,46 +15,73 @@
 
     h1 {
       color: #cc3366;
-      margin-top: 30px;
+      margin-top: 20px;
       font-size: 2em;
     }
 
-    /* Rosa en el centro */
+    /* --- ROSA --- */
     .rosa {
-      width: 120px;
-      height: 120px;
-      margin: 50px auto;
-      background: radial-gradient(circle at 30% 30%, #ff3366, #cc0055);
-      border-radius: 50%;
-      position: relative;
-      animation: latido 2s infinite ease-in-out;
-      box-shadow: 0 0 25px rgba(255, 51, 102, 0.6);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 150px;
+      height: 150px;
+      animation: girar 15s linear infinite;
     }
 
-    .rosa::before, .rosa::after {
-      content: '';
+    .petalo-rosa {
       position: absolute;
       width: 100px;
       height: 100px;
-      background: radial-gradient(circle at 30% 30%, #ff6699, #cc3366);
+      background: radial-gradient(circle at 30% 30%, #ff4d79, #cc0052);
       border-radius: 50%;
-      top: -20px;
-      left: 10px;
-      transform: rotate(45deg);
       opacity: 0.8;
+      transform-origin: bottom right;
     }
 
-    .rosa::after {
-      top: 10px;
-      left: -20px;
-      transform: rotate(-45deg);
+    .petalo-rosa:nth-child(1) {
+      transform: rotate(0deg) translate(20px, -10px);
+    }
+    .petalo-rosa:nth-child(2) {
+      transform: rotate(45deg) translate(20px, -10px);
+    }
+    .petalo-rosa:nth-child(3) {
+      transform: rotate(90deg) translate(20px, -10px);
+    }
+    .petalo-rosa:nth-child(4) {
+      transform: rotate(135deg) translate(20px, -10px);
+    }
+    .petalo-rosa:nth-child(5) {
+      transform: rotate(180deg) translate(20px, -10px);
+    }
+    .petalo-rosa:nth-child(6) {
+      transform: rotate(225deg) translate(20px, -10px);
+    }
+    .petalo-rosa:nth-child(7) {
+      transform: rotate(270deg) translate(20px, -10px);
+    }
+    .petalo-rosa:nth-child(8) {
+      transform: rotate(315deg) translate(20px, -10px);
     }
 
-    @keyframes latido {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.1); }
+    .centro {
+      position: absolute;
+      width: 70px;
+      height: 70px;
+      background: radial-gradient(circle, #cc0044, #990033);
+      border-radius: 50%;
+      top: 40px;
+      left: 40px;
+      box-shadow: 0 0 10px rgba(204, 0, 68, 0.5);
     }
 
+    @keyframes girar {
+      from { transform: translate(-50%, -50%) rotate(0deg); }
+      to { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    /* --- PÉTALOS CAYENDO --- */
     .petalo {
       position: absolute;
       width: 16px;
@@ -67,24 +94,30 @@
     }
 
     @keyframes caer {
-      0% {
-        transform: translateY(-10vh) rotate(0deg);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(110vh) rotate(360deg);
-        opacity: 0;
-      }
+      0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
     }
   </style>
 </head>
 <body>
   <h1>🌸 Estas flores son para vos 🌸</h1>
-  <div class="rosa"></div>
 
-  <!-- Más pétalos -->
+  <!-- Rosa en el centro -->
+  <div class="rosa">
+    <div class="petalo-rosa"></div>
+    <div class="petalo-rosa"></div>
+    <div class="petalo-rosa"></div>
+    <div class="petalo-rosa"></div>
+    <div class="petalo-rosa"></div>
+    <div class="petalo-rosa"></div>
+    <div class="petalo-rosa"></div>
+    <div class="petalo-rosa"></div>
+    <div class="centro"></div>
+  </div>
+
+  <!-- Pétalos cayendo -->
   <script>
-    for (let i = 0; i < 35; i++) {
+    for (let i = 0; i < 40; i++) {
       const petalo = document.createElement('div');
       petalo.classList.add('petalo');
       petalo.style.left = Math.random() * 100 + 'vw';
