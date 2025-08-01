@@ -15,110 +15,81 @@
 
     h1 {
       color: #cc3366;
-      margin-top: 20px;
+      margin-top: 50px;
       font-size: 2em;
     }
 
-    /* --- ROSA --- */
-    .rosa {
+    .flor {
       position: absolute;
-      top: 50%;
+      top: 45%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 150px;
-      height: 150px;
-      animation: girar 15s linear infinite;
+      animation: girar 10s linear infinite;
     }
 
-    .petalo-rosa {
+    .petalo-flor {
       position: absolute;
-      width: 100px;
-      height: 100px;
-      background: radial-gradient(circle at 30% 30%, #ff4d79, #cc0052);
-      border-radius: 50%;
-      opacity: 0.8;
-      transform-origin: bottom right;
+      width: 80px;
+      height: 80px;
+      background: radial-gradient(circle at 30% 30%, #ff69b4, #ff1493);
+      border-radius: 50% 50% 0 0;
+      transform-origin: bottom center;
+      opacity: 0.9;
     }
-
-    .petalo-rosa:nth-child(1) {
-      transform: rotate(0deg) translate(20px, -10px);
-    }
-    .petalo-rosa:nth-child(2) {
-      transform: rotate(45deg) translate(20px, -10px);
-    }
-    .petalo-rosa:nth-child(3) {
-      transform: rotate(90deg) translate(20px, -10px);
-    }
-    .petalo-rosa:nth-child(4) {
-      transform: rotate(135deg) translate(20px, -10px);
-    }
-    .petalo-rosa:nth-child(5) {
-      transform: rotate(180deg) translate(20px, -10px);
-    }
-    .petalo-rosa:nth-child(6) {
-      transform: rotate(225deg) translate(20px, -10px);
-    }
-    .petalo-rosa:nth-child(7) {
-      transform: rotate(270deg) translate(20px, -10px);
-    }
-    .petalo-rosa:nth-child(8) {
-      transform: rotate(315deg) translate(20px, -10px);
-    }
-
- 
-
 
     @keyframes girar {
       from { transform: translate(-50%, -50%) rotate(0deg); }
       to { transform: translate(-50%, -50%) rotate(360deg); }
     }
 
-    /* --- PÉTALOS CAYENDO --- */
     .petalo {
       position: absolute;
-      width: 16px;
-      height: 16px;
+      width: 14px;
+      height: 14px;
       background: radial-gradient(circle at 30% 30%, #ff69b4, #ff1493);
       border-radius: 50% 50% 0 0;
       transform: rotate(45deg);
       opacity: 0.8;
-      animation: caer 10s linear infinite;
+      animation: caer linear infinite;
     }
 
     @keyframes caer {
-      0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
-      100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+      0% {
+        transform: translateY(-10vh) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+      }
     }
   </style>
 </head>
 <body>
   <h1>🌸 Estas flores son para vos 🌸</h1>
 
-  <!-- Rosa en el centro -->
-  <div class="rosa">
-    <div class="petalo-rosa"></div>
-    <div class="petalo-rosa"></div>
-    <div class="petalo-rosa"></div>
-    <div class="petalo-rosa"></div>
-    <div class="petalo-rosa"></div>
-    <div class="petalo-rosa"></div>
-    <div class="petalo-rosa"></div>
-    <div class="petalo-rosa"></div>
-    <div class="centro"></div>
+  <!-- Flor giratoria -->
+  <div class="flor">
+    <div class="petalo-flor" style="transform: rotate(0deg) translateY(-40px);"></div>
+    <div class="petalo-flor" style="transform: rotate(45deg) translateY(-40px);"></div>
+    <div class="petalo-flor" style="transform: rotate(90deg) translateY(-40px);"></div>
+    <div class="petalo-flor" style="transform: rotate(135deg) translateY(-40px);"></div>
+    <div class="petalo-flor" style="transform: rotate(180deg) translateY(-40px);"></div>
+    <div class="petalo-flor" style="transform: rotate(225deg) translateY(-40px);"></div>
+    <div class="petalo-flor" style="transform: rotate(270deg) translateY(-40px);"></div>
+    <div class="petalo-flor" style="transform: rotate(315deg) translateY(-40px);"></div>
   </div>
 
-  <!-- Pétalos cayendo -->
+  <!-- Pétalos flotando -->
   <script>
-    for (let i = 0; i < 40; i++) {
+    for (let i = 0; i < 50; i++) {
       const petalo = document.createElement('div');
-      petalo.classList.add('petalo');
+      petalo.className = 'petalo';
       petalo.style.left = Math.random() * 100 + 'vw';
-      petalo.style.animationDelay = Math.random() * 8 + 's';
-      petalo.style.animationDuration = 8 + Math.random() * 5 + 's';
+      petalo.style.animationDuration = (5 + Math.random() * 5) + 's';
+      petalo.style.animationDelay = Math.random() * 5 + 's';
       document.body.appendChild(petalo);
     }
   </script>
 </body>
 </html>
-
-
